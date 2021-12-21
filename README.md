@@ -1,0 +1,1 @@
+1. 2021-12-21 实现Promise.all、Promise.race、Promise.finally
