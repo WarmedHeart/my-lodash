@@ -31,29 +31,6 @@
   })
  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  /**
   * 通过MDN分析Promise.all特点：全部fulfilled执行resolve(res: Array)；有一个rejected执行reject(res)
   * @param {} iterable: promise的iterable类型（注：Array，Map，Set都属于ES6的iterable类型）
