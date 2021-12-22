@@ -4,7 +4,55 @@
  * 通过一些方法中断 promise，但是 promise 并没有终止，网络请求依然可能返回，只不过那时我们已经不关心请求结果了。
  * 被then、catch捕获后，在其内部状态又变为pending
  */
- function MyPromise() {};
+ function MyPromise(fn) {
+  if (!(this instanceof Foo)) throw new Error('no new instance');
+  
+  this.cbs = [];
+  const resolve = (value) => {
+    setTimeout(() => {
+      this.data = value;
+      this.cbs.forEach((cb) => cb(value));
+    })
+  }
+
+  fn(resolve);
+ };
+
+ MyPromise.prototype.then = function(onResolved) {
+  return new MyPromise((resolve) => {
+    this.cbs.push(() => {
+      const res = onResolved(this.data);
+      if (res instanceof MyPromise) {
+        res.then(res);
+      } else {
+        resolve(res);
+      }
+    })
+  })
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  /**
   * 通过MDN分析Promise.all特点：全部fulfilled执行resolve(res: Array)；有一个rejected执行reject(res)
