@@ -1,0 +1,14 @@
+{
+  "name": "es",
+  "version": "1.0.0",
+  "description": "ES6所有特性：可查看第三方core-js实现",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "core-js": "^3.20.0"
+  }
+}
