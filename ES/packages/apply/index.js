@@ -44,10 +44,13 @@ function bind(context, ...fargs) {
  * @returns 
  */
 function getContext(context) {
-  if (context !== undefined) {
-    return context;
+  // 将基本类型转成对应的包装类型
+  var contextThis = Object(context);
+  if (context !== undefined && context !== null) {
+    return contextThis;
   }
-  return globalThis ? globalThis : window ? window : global ? window : {};
+  // 为undefined、nujll，返回全局变量
+  return globalThis ? globalThis : window ? window : global ? global : {};
 }
 
 Function.prototype.apply = apply;
